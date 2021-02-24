@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vue Lab</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+<body>
+    <div id="app" class="mx-auto h-screen flex justify-center"> 
+        <div class="mt-20" v-if="!isShowImg">
+            <photo-search :imgLength="getImgLength" :isshowsearchbox="isShowSearchBox" 
+            @handle-cancel="handleCancel" 
+            @find-result="findResult"
+            @show-search-box="showSearchBox"></photo-search>
+            <photo-item :imgs="imgs" :isFound="isFound" @handle-click-img="handleClickImg" @show-favorite="showFavorite"></photo-item>
+        </div>
+        <div class="bg-black min-h-screen w-full flex justify-center" v-else="isShowImg">
+            <photo-view :isshowimg="isShowImg" :currentimg="currentImg" @handle-close-img="handleCloseImg"></photo-view>
+        </div>
+    </div>
+
+  <!-- my main.js -->
+  <script src="./main.js"> </script>
+  <script src="./components/PhotoItem.js"></script>
+  <script src="./components/PhotoSearch.js"></script>
+  <script src="./components/PhotoView.js"></script>
+  <script>
+
+    const mountedApp = app.mount('#app')
+  </script>
+</body>
+
+</html>
